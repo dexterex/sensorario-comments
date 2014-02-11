@@ -42,7 +42,7 @@ class SaveAction extends CAction
         $sensorarioCommento = new SensorarioCommentsModel();
         $sensorarioCommento->thread = $request->getPost('thread');
         $sensorarioCommento->comment = $request->getPost('commento');
-        $sensorarioCommento->user = Yii::app()->user->name;
+        $sensorarioCommento->user_id = Yii::app()->user->id;
         $sensorarioCommento->datetime = date('Y-m-d H:i:s');
 
         $message = '';
@@ -60,7 +60,7 @@ class SaveAction extends CAction
         }
 
         $params = array(
-          'isOwner' => Yii::app()->user->name === $sensorarioCommento->user,
+          'isOwner' => Yii::app()->user->id === $sensorarioCommento->user_id,
           'comment' => $sensorarioCommento
         );
 

@@ -1,7 +1,7 @@
 <div class="sensorario-comments-item"
      style="display: none;"
      id="sensorario-comment-id-<?php echo $comment->id;?>">
-    <div class="sensorario-comments-author"><?php echo $comment->getDate();?> <strong><?php echo $comment->user;?></strong> wrote:</div>
+    <div class="sensorario-comments-author"><?php echo $comment->getDate();?> <strong><?php echo $comment->user->username;?></strong> wrote:</div>
     <div class="sensorario-comments-comment"><?php echo $comment->getEscapedComment();?></div>
     <div class="sensorario-comments-actions">
         <?php if ($isOwner) :?>

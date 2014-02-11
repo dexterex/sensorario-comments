@@ -51,7 +51,7 @@ class LatestAction extends CAction
         foreach ($comments as $comment) {
             $params = array(
               'comment' => $comment,
-              'isOwner' => Yii::app()->user->name === $comment->user,
+              'isOwner' => Yii::app()->user->id === $comment->user_id,
             );
             $html = $controller->renderPartial('_item', $params, true) . $html;
         }

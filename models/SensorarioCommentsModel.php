@@ -43,7 +43,7 @@ class SensorarioCommentsModel extends CActiveRecord
     public function tableName()
     {
 
-        return 'sensorario_comments';
+        return 'comments';
 
     }
 
@@ -56,10 +56,10 @@ class SensorarioCommentsModel extends CActiveRecord
     {
 
         return array(
-          array('thread, user, comment', 'required'),
+          array('thread, user_id, comment', 'required'),
           array('thread', 'length', 'max' => 50),
-          array('comment, user', 'safe'),
-          array('id, thread, comment, user', 'safe', 'on' => 'search'),
+          array('comment, user_id', 'safe'),
+          array('id, thread, comment, user_id', 'safe', 'on' => 'search'),
         );
 
     }
@@ -73,6 +73,7 @@ class SensorarioCommentsModel extends CActiveRecord
     {
 
         return array(
+					'user' => array(self::BELONGS_TO, 'YumUser', 'user_id')
         );
 
     }
@@ -89,7 +90,7 @@ class SensorarioCommentsModel extends CActiveRecord
           'id' => 'ID',
           'thread' => 'Thread',
           'comment' => 'Comment',
-          'user' => 'User',
+          'user_id' => 'User',
           'datetime' => 'Date',
         );
 
@@ -115,7 +116,7 @@ class SensorarioCommentsModel extends CActiveRecord
         $criteria->compare('id', $this->id);
         $criteria->compare('thread', $this->thread, true);
         $criteria->compare('comment', $this->comment, true);
-        $criteria->compare('user', $this->user);
+        $criteria->compare('user_id', $this->user_id);
         $criteria->compare('datetime', $this->datetime);
 
         $arrayCriteria = array(
